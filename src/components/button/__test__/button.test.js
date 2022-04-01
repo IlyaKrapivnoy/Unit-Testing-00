@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from './../button';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
+
+afterEach(cleanup);
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -13,4 +15,9 @@ it('renders button correctly', () => {
         <Button label={'a very important button'}></Button>
     );
     expect(getByTestId('button')).toHaveTextContent('a very important button');
+});
+
+it('renders button correctly 2', () => {
+    const { getByTestId } = render(<Button label={'save'}></Button>);
+    expect(getByTestId('button')).toHaveTextContent('save');
 });
