@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from './../button';
 import { render, cleanup } from '@testing-library/react';
+import renderer from 'react-test-renderer';
 
 afterEach(cleanup);
 
@@ -20,4 +21,9 @@ it('renders button correctly', () => {
 it('renders button correctly 2', () => {
     const { getByTestId } = render(<Button label={'save'}></Button>);
     expect(getByTestId('button')).toHaveTextContent('save');
+});
+
+it('matches snapshot', () => {
+    const tree = renderer.create(<Button label='save' />).toJSON();
+    expect(tree).toMatchSnapshot();
 });
