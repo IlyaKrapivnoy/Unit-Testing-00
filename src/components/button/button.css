@@ -1,0 +1,8 @@
+.btnStyle {
+     border: 1px solid gray;
+     padding: 10px;
+     background: transparent;
+     color: #fff;
+     text-transform: uppercase;
+     cursor: pointer;
+}
